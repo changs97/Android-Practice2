@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.changs.tablayoutdemo.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,8 +42,11 @@ class MainActivity : AppCompatActivity() {
             binding.tabLayout.addTab(binding.tabLayout.newTab())
         }
 
+        val dotsIndicator = binding.dotsIndicator
         val adapter = TabPagerAdapter(this, binding.tabLayout.tabCount)
         binding.viewPager.adapter = adapter
+        dotsIndicator.setViewPager2(binding.viewPager)
+
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = "Tab ${(position + 1)} Item"
