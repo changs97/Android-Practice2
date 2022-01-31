@@ -1,14 +1,17 @@
 package com.changs.carddemo
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 
-class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(val context : Context): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     private val titles = arrayOf("Chapter One", "Chapter Two", "Chapter Three", "Chapter Four","Chapter Five","Chapter Six",
         "Chapter Seven","Chapter Eight")
@@ -28,6 +31,11 @@ class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         holder.itemTitle.text = titles[position]
         holder.itemImage.setImageResource(images[position])
         holder.itemDetail.text = details[position]
+
+        val animation = AnimationUtils.loadAnimation(context, R.anim.slide_in_to_left)
+        holder.itemView.animation = animation
+
+
     }
 
     override fun getItemCount(): Int {
@@ -45,7 +53,7 @@ class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
             itemDetail = itemView.findViewById(R.id.itemlDetail)
 
             itemView.setOnClickListener{ v: View ->
-                var position : Int = adapterPosition
+                val position : Int = adapterPosition
 
                 Snackbar.make(v, "Click detected on item $position",
                 Snackbar.LENGTH_LONG).setAction("Action", null).show()

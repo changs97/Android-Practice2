@@ -36,15 +36,15 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
+            android:id="@+id/itemlDetail"
             android:layout_width="236dp"
             android:layout_height="39dp"
-            android:id="@+id/itemlDetail"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:textSize="30sp"
+            android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/itemImage"
             app:layout_constraintStart_toEndOf="@+id/itemImage"
-            app:layout_constraintTop_toBottomOf="@id/itemlTitle"/>
+            app:layout_constraintTop_toBottomOf="@id/itemlTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
